@@ -1,0 +1,16 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: 'https://shopify.dev/internal/content/style-guides/dev-docs-style-guide#capitalization'
+level: warning
+ignorecase: false
+action:
+  name: replace
+scope: sentence
+swap:
+  api: API
+  json: JSON
+  xml: XML
+  rest: REST
+  html: HTML
+  url:  URL
+  id: ID

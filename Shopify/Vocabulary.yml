@@ -1,0 +1,12 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: 'https://shopify.dev/internal/content/style-guides/dev-docs-style-guide#vocabulary'
+level: warning
+ignorecase: false
+action:
+  name: replace
+scope: sentence
+swap:
+  application: app
+  app store: Shopify App Store
+  log into: log in to
