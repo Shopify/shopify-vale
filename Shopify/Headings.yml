@@ -1,0 +1,8 @@
+extends: existence
+message: "Don't use '%s' in a heading."
+link: https://shopify.dev/internal/content/style-guides/dev-docs-style-guide#using-verbs-in-headings
+level: warning
+scope: heading
+ignorecase: true
+tokens:
+  - overview

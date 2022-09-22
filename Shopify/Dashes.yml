@@ -1,0 +1,13 @@
+extends: existence
+message: "Remove the spaces around '%s' or use a period or comma instead."
+link: https://shopify.dev/internal/content/style-guides/dev-docs-style-guide#dashes
+ignorecase: true
+nonword: true
+level: error
+action:
+  name: edit
+  params:
+    - remove
+    - ' '
+tokens:
+  - '[—–]\s|\s[—–]'
