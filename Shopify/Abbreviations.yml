@@ -1,6 +1,6 @@
 extends: substitution
 message: "Use '%s' instead of '%s'."
-link: 'https://shopify.dev/internal/content/style-guides/dev-docs-style-guide#grammar-and-style-conventions'
+link: 'https://shopify.dev/internal/content/style-guides/dev-docs-style-guide#abbreviations'
 ignorecase: true
 level: error
 nonword: true
@@ -12,7 +12,7 @@ swap:
   '\b(?:etc)[\s,]': for example or like or such as
   '\b(?:eg|e\.g\.)[\s,]': for example or like or such as
   '\b(?:ie|i\.e\.)[\s,]': also known as
-  '\b(?:per)[\s,]': for each or each
+  # '\b(?:per)[\s,]': for each or each
   # '^re': referring to
   '\b(?:vs|vs\.|versus)[\s,]': instead of or compared to
   '\b(?:via)[\s,]': using

@@ -1,0 +1,10 @@
+extends: substitution
+message: "Feel free to use '%s' instead of '%s'."
+link: 'https://shopify.dev/internal/content/style-guides/dev-docs-style-guide#ambiguous-words'
+level: suggestion
+scope: sentence
+ignorecase: true
+action:
+  name: replace
+swap:
+  associated to: associated with

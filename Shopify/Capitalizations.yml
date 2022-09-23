@@ -13,4 +13,4 @@ swap:
   rest: REST
   html: HTML
   url:  URL
-  id: ID
+  # id: ID

@@ -10,3 +10,11 @@ swap:
   application: app
   app store: Shopify App Store
   log into: log in to
+  e-mail: email
+  liquid markup: Liquid code
+  boolean: Boolean
+  ios: iOS
+  '(?:graphql|Graphql)': GraphQL
+  '(?:OAuth|Oauth)': OAuth
+  storefront API: Storefront API
+  '(?:shopify CLI|shopify cli)': Shopify CLI
