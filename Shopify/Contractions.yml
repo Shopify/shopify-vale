@@ -15,7 +15,7 @@ swap:
   does not: doesn't
   has not: hasn't
   have not: haven't
-  how is: how's
+  # how is: how's
   is not: isn't
   it is: it's
   should not: shouldn't
@@ -27,5 +27,5 @@ swap:
   were not: weren't
   what is: what's
   when is: when's
-  where is: where's
+  # where is: where's
   will not: won't
