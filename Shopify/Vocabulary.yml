@@ -18,3 +18,4 @@ swap:
   '(?:OAuth|Oauth)': OAuth
   storefront API: Storefront API
   '(?:shopify CLI|shopify cli)': Shopify CLI
+  able to: can
