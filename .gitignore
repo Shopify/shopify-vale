@@ -1,4 +1,3 @@
 Shopify.zip
 .DS_Store
-tests/tmp/bad.json
-tests/tmp/good.json
+tests/tmp/*.json

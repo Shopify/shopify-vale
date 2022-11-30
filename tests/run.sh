@@ -29,48 +29,48 @@ fi
 #
 # Run vale for `good` folder and store output
 #
-${valeBinary} --config "${SCRIPTPATH}/.vale.ini" --output=JSON "${SCRIPTPATH}/good" > "${SCRIPTPATH}/tmp/good.json"
+${valeBinary} --config "${SCRIPTPATH}/.vale.ini" --output=JSON "${SCRIPTPATH}/pass" > "${SCRIPTPATH}/tmp/pass.json"
 
 #
 # Use https://stedolan.github.io/jq/manual/#length to count encountered errors
 # We expect 0 because all examples in the good folder should pass
 #
 expectedErrorCount=0
-hits=$(cat ${SCRIPTPATH}/tmp/good.json | ${jqBinary} '. | length')
+hits=$(cat ${SCRIPTPATH}/tmp/pass.json | ${jqBinary} '. | length')
 if [ "$hits" == "$expectedErrorCount" ] ;then
-    echo "All good examples passed!"
-    passedGood=0
+    echo "All 'pass' test scenarios passed!"
+    errorsInPass=0
 else
-    echo "Error when running 'good' test scenarios:"
+    echo "Error when running 'pass' test scenarios:"
     echo "Unexpected result count. Should be ${expectedErrorCount} but found ${hits}."
-    cat ${SCRIPTPATH}/tmp/good.json
-    passedGood=1
+    cat ${SCRIPTPATH}/tmp/pass.json
+    errorsInPass=1
 fi
 
 #
 # Run vale for `bad` folder and store output
 #
-${valeBinary} --config "${SCRIPTPATH}/.vale.ini" --output=JSON "${SCRIPTPATH}/bad" > "${SCRIPTPATH}/tmp/bad.json"
+${valeBinary} --config "${SCRIPTPATH}/.vale.ini" --output=JSON "${SCRIPTPATH}/fail" > "${SCRIPTPATH}/tmp/fail.json"
 
 #
 # Use https://stedolan.github.io/jq/manual/#length to count encountered errors
 # We expect them to be equal the number of files in the directory
 # We need to add 0 to the count result in order to 'typecast' it into an integer
 #
-expectedErrorCount=$(find ${SCRIPTPATH}/bad -type f -name '*.md' | wc -l)
+expectedErrorCount=$(find ${SCRIPTPATH}/fail -type f -name '*.md' | wc -l)
 expectedErrorCount="$(($expectedErrorCount + 0))"
-hits=$(cat ${SCRIPTPATH}/tmp/bad.json | ${jqBinary} '. | length')
+hits=$(cat ${SCRIPTPATH}/tmp/fail.json | ${jqBinary} '. | length')
 if [ "$hits" == "$expectedErrorCount" ] ;then
-    echo "Bad result count is as expected"
-    passedBad=0
+    echo "Fail result count is as expected"
+    errorsInFail=0
 else
-    echo "Error when running 'bad' test scenarios:"
+    echo "Error when running 'fail' test scenarios:"
     echo "Unexpected result count. Should be ${expectedErrorCount} but found ${hits}."
-    cat ${SCRIPTPATH}/tmp/bad.json
-    passedBad=1
+    cat ${SCRIPTPATH}/tmp/fail.json
+    errorsInFail=1
 fi
 
 #
 # Will let this exit with a non zero exit code if either case above hit errors
 #
-exit $((passedBad+passedGood))
+exit $((errorsInPass+errorsInFail))
