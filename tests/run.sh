@@ -3,12 +3,21 @@ set -euxo pipefail
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 #
+# Clean up prior artefacts
+#
+rm -f ${SCRIPTPATH}/tmp/*.json
+
+#
 # Determine the platform to find correct jq binary to use
 #
 if [ "$(uname)" == "Darwin" ]; then
     jqBinary="${SCRIPTPATH}/bin/jq-osx-amd64"
+    valeBinary="vale"
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     jqBinary="${SCRIPTPATH}/bin/jq-linux64"
+    wget https://github.com/errata-ai/vale/releases/download/v2.15.4/vale_2.15.4_Linux_64-bit.tar.gz
+    tar -xvzf vale_2.15.4_Linux_64-bit.tar.gz -C "${SCRIPTPATH}/bin"
+    valeBinary="${SCRIPTPATH}/bin/vale"
 elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
     echo "Win32 is not supported"
     exit 1
@@ -20,7 +29,7 @@ fi
 #
 # Run vale for `good` folder and store output
 #
-vale --output=JSON "${SCRIPTPATH}/good" > "${SCRIPTPATH}/tmp/good.json"
+${valeBinary} --output=JSON "${SCRIPTPATH}/good" > "${SCRIPTPATH}/tmp/good.json"
 
 #
 # Use https://stedolan.github.io/jq/manual/#length to count encountered errors
@@ -41,7 +50,7 @@ fi
 #
 # Run vale for `bad` folder and store output
 #
-vale --output=JSON "${SCRIPTPATH}/bad" > "${SCRIPTPATH}/tmp/bad.json"
+${valeBinary} --output=JSON "${SCRIPTPATH}/bad" > "${SCRIPTPATH}/tmp/bad.json"
 
 #
 # Use https://stedolan.github.io/jq/manual/#length to count encountered errors
