@@ -1,2 +1,3 @@
 Shopify.zip
 .DS_Store
+tests/tmp/*.json
