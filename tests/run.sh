@@ -29,7 +29,7 @@ fi
 #
 # Run vale for `good` folder and store output
 #
-${valeBinary} --output=JSON "${SCRIPTPATH}/good" > "${SCRIPTPATH}/tmp/good.json"
+${valeBinary} --config "${SCRIPTPATH}/.vale.ini" --output=JSON "${SCRIPTPATH}/good" > "${SCRIPTPATH}/tmp/good.json"
 
 #
 # Use https://stedolan.github.io/jq/manual/#length to count encountered errors
@@ -50,7 +50,7 @@ fi
 #
 # Run vale for `bad` folder and store output
 #
-${valeBinary} --output=JSON "${SCRIPTPATH}/bad" > "${SCRIPTPATH}/tmp/bad.json"
+${valeBinary} --config "${SCRIPTPATH}/.vale.ini" --output=JSON "${SCRIPTPATH}/bad" > "${SCRIPTPATH}/tmp/bad.json"
 
 #
 # Use https://stedolan.github.io/jq/manual/#length to count encountered errors
