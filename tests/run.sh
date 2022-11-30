@@ -45,7 +45,7 @@ vale --output=JSON bad > './tmp/bad.json'
 # Use https://stedolan.github.io/jq/manual/#length to count encountered errors
 # We expect 1 because all bad examples are intentionally added here
 #
-expectedErrorCount=1
+expectedErrorCount=$(find bad -type f -name '*.md' | wc -l)
 hits=$(cat ./tmp/bad.json | ${jqBinary} '. | length')
 if [ $hits == $expectedErrorCount ] ;then
     echo "Bad result count is as expected"
