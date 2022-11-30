@@ -26,7 +26,7 @@ vale --output=JSON good > './tmp/good.json'
 #
 expectedErrorCount=0
 hits=$(cat ./tmp/good.json | ${jqBinary} '. | length')
-if [ $hits == $expectedErrorCount ] ;then
+if [ "$hits" == "$expectedErrorCount" ] ;then
     echo "All good examples passed!"
     passedGood=0
 else
@@ -43,11 +43,13 @@ vale --output=JSON bad > './tmp/bad.json'
 
 #
 # Use https://stedolan.github.io/jq/manual/#length to count encountered errors
-# We expect 1 because all bad examples are intentionally added here
+# We expect them to be equal the number of files in the directory
+# We need to add 0 to the count result in order to 'typecast' it into an integer
 #
 expectedErrorCount=$(find bad -type f -name '*.md' | wc -l)
+expectedErrorCount="$(($expectedErrorCount + 0))"
 hits=$(cat ./tmp/bad.json | ${jqBinary} '. | length')
-if [ $hits == $expectedErrorCount ] ;then
+if [ "$hits" == "$expectedErrorCount" ] ;then
     echo "Bad result count is as expected"
     passedBad=0
 else
