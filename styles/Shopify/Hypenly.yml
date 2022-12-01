@@ -1,7 +1,7 @@
 extends: existence
 message: "'%s' doesn't need a hyphen."
 link: 'https://shopify.dev/internal/content/style-guides/dev-docs-style-guide#hyphens'
-level: error
+level: warning
 ignorecase: false
 nonword: true
 action:

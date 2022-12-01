@@ -2,7 +2,8 @@
 
 ## Publish Vale rules
 
-You might need to publish Vale rules. For example, in the case of updates.
+You might need to publish Vale rules. For example, you want to make updates available to PRs against `Shopify/shopify-dev`.
+
 The `styles/Shopify` directory contains the Vale linting rules. To publish Vale rules, you need to create a `.zip` of the `Shopify` directory and either distribute or publish the `.zip`.x
 
 Run the following command. It changes to the `styles` directory and zips the `Shopify` directory:
@@ -10,8 +11,13 @@ Run the following command. It changes to the `styles` directory and zips the `Sh
 ```bash
 cd styles
 zip -r Shopify.zip Shopify -x "*.DS_Store"
+
 ```
-<!-- Ren: add a table describing the flags the example passes. Helps people less familiar with shell etc. make sense of the example. -->
+
+**Options**
+
+- `-x`: Restricted? e..g. no E11?
+- `-r`: Recursive. Executes the script on all subdirectories.
 
 You can then distribute this zip archive or publish it as a release artifact.
 
