@@ -1,5 +1,5 @@
 extends: existence
-message: "Don't use semicolons. Use a period or a comma instead."
+message: "Don't use semicolons. Use either a period or comma instead."
 link: 'https://shopify.dev/internal/content/style-guides/dev-docs-style-guide#semicolons'
 nonword: true
 scope: sentence
